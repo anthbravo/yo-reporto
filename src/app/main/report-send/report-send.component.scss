@@ -1,0 +1,60 @@
+@font-face {
+  font-family: Bebas;
+  src: url(../../../assets/BebasNeue.otf);
+}
+.container-logro {
+  width: 100%;
+  height: 100vh;
+  background: #eee;
+}
+.container-img {
+  width: 100%;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.container-text {
+  height: 50vh;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  h1 {
+    font-family: Bebas;
+    width: 50%;
+    text-align: center;
+    color: #444444;
+    font-size: 32px;
+  }
+  h2 {
+    font-family: "Open Sans", "sans-serif";
+    font-size: 21px;
+    color: #444444;
+    font-weight: 300;
+    text-align: center;
+    width: 80%;
+  }
+}
+.btn-container {
+  height: 20vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
+}
+#volver {
+  width: 30%;
+  height: 39px;
+  padding: 5px 20px;
+  text-align: center;
+  font-family: "Roboto", "sans-serif";
+  border: none;
+  background: #7cb56b;
+  color: #eee;
+  font-size: 18px;
+  border-radius: 8px;
+}
