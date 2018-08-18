@@ -33,13 +33,15 @@ export class CameraComponent implements OnInit {
   buttonSend: HTMLElement;
   buttonList: HTMLElement;
   buttonPhoto: HTMLElement;
-
+  sizeWidthWindows: number;
   constructor(
     private router: Router,
     public dialog: MatDialog,
     private reportService: ReportService,
     private authenticationService: AuthenticationService
-  ) {}
+  ) {
+    this.sizeWidthWindows = window.innerWidth;
+  }
 
   ngOnInit() {}
 
@@ -54,7 +56,7 @@ export class CameraComponent implements OnInit {
       navigator.mediaDevices
         .getUserMedia({
           audio: false,
-          video: { facingMode: { exact: "environment" } }
+          video: { facingMode: "user" }
         })
         .then(stream => {
           this.camara.nativeElement.src = window.URL.createObjectURL(stream);
@@ -71,13 +73,27 @@ export class CameraComponent implements OnInit {
   }
 
   photo() {
+    console.log(this.sizeWidthWindows);
     console.log("photo");
     this.buttonCancel.style.display = "block";
     this.buttonList.style.display = "block";
     this.buttonPhoto.style.display = "block";
     this.canvas.nativeElement.style.display = "block";
-
-    this.context.drawImage(this.camara.nativeElement, 0, 0, 640, 480);
+    this.canvas.nativeElement.setAttribute(
+      "width",
+      this.sizeWidthWindows.toString()
+    );
+    this.canvas.nativeElement.setAttribute(
+      "height",
+      (this.sizeWidthWindows * 1.5).toString()
+    );
+    this.context.drawImage(
+      this.camara.nativeElement,
+      0,
+      0,
+      this.sizeWidthWindows,
+      this.sizeWidthWindows * 1.5
+    );
 
     this.report.image = this.canvas.nativeElement.toDataURL("image/png");
     this.report.date = new Date();
@@ -114,7 +130,7 @@ export class CameraComponent implements OnInit {
         )
       ) {
         this.buttonPhoto.style.display = "none";
-        this.buttonSend.style.display = "block";
+        this.buttonSend.style.display = "flex";
       }
     });
 

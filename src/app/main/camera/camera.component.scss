@@ -1,0 +1,96 @@
+@font-face {
+  font-family: Bebas;
+  src: url(../../../assets/BebasNeue.otf);
+}
+
+.header {
+  width: 100%;
+  height: 60px;
+  background: #7576ab;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.header button {
+  z-index: 1;
+}
+.header .header-h {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.header .header-h h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e3e3e3;
+  // font-family: Bebas;
+  font-family: "Roboto", "sans-serif";
+}
+.camera-container {
+  width: 100%;
+  height: calc(100vh - 60px);
+  position: relative;
+}
+#btnPhoto,
+#btnSend {
+  position: absolute;
+  top: 89%;
+  left: 45%;
+  transform: translate(-45%, -89%);
+  font-size: 60px;
+}
+#btnSend {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #272727;
+  border: none;
+
+  justify-content: center;
+  align-items: center;
+}
+#menu {
+  color: #eee;
+}
+.material-icons {
+  font-size: inherit;
+}
+#menu {
+  font-size: 24px;
+}
+#camara {
+  width: 360px;
+  height: calc(100vh - 60px);
+}
+#btnCancel {
+  position: absolute;
+  top: 10%;
+  left: 90%;
+  transform: translate(-90%, -10%);
+  font-size: 32px;
+}
+#Capa_2 {
+  width: 25px;
+  height: 20px;
+}
+#btnList {
+  position: absolute;
+  top: 90%;
+  left: 90%;
+  width: 48px;
+  height: 48px;
+  background: #eee;
+  border-radius: 50%;
+  transform: translate(-90%, -90%);
+}
+.mat-radio-label {
+  margin: 20px 0 !important;
+}
+.mat-icon {
+  color: inherit;
+}
