@@ -14,16 +14,18 @@ import { Report } from "../models/report";
 })
 export class ReportService {
   private reportCollection: AngularFirestoreCollection<Report>;
-  reports: Observable<Report[]>;
 
   constructor(private angularFireStore: AngularFirestore) {
     this.reportCollection = angularFireStore.collection<Report>(
       localStorage.getItem("uid")
     );
-    this.reports = this.reportCollection.valueChanges();
   }
 
   sendReport(report: Report) {
     this.reportCollection.add(report);
+  }
+
+  listAllReports(): Observable<Report[]> {
+    return this.reportCollection.valueChanges();
   }
 }
