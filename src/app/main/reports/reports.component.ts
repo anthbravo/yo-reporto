@@ -54,7 +54,7 @@ export class ReportsComponent implements OnInit {
     this.router.navigateByUrl("/camara");
   }
 
-  filterState($event) {
-    console.log("filterState", event.target.innerText);
+  filterState(event) {
+    console.log("filterState", event.value);
   }
 }
