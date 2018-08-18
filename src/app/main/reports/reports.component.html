@@ -21,7 +21,7 @@
           <span mat-line>Tipo de Reporte: {{report.typeReport}}</span>
           <span mat-line>Placa: {{report.plate}}</span>
           <span mat-line>Estado: {{report.state}}</span>
-          <span mat-line>Fecha: {{report.date}}</span>
+          <span mat-line>Fecha: {{report.date | date: "short"}}</span>
         </mat-list-item>
       </div>
       <div *ngIf="report.state=='aceptado' && filterForState=='aceptado'">
@@ -31,7 +31,7 @@
           <span mat-line>Tipo de Reporte: {{report.typeReport}}</span>
           <span mat-line>Placa: {{report.plate}}</span>
           <span mat-line>Estado: {{report.state}}</span>
-          <span mat-line>Fecha: {{report.date}}</span>
+          <span mat-line>Fecha: {{report.date | date: "short"}}</span>
         </mat-list-item>
       </div>
       <div *ngIf="report.state=='rechazado' && filterForState=='rechazado'">
@@ -41,7 +41,7 @@
           <span mat-line>Tipo de Reporte: {{report.typeReport}}</span>
           <span mat-line>Placa: {{report.plate}}</span>
           <span mat-line>Estado: {{report.state}}</span>
-          <span mat-line>Fecha: {{report.date}}</span>
+          <span mat-line>Fecha: {{report.date | date: "short"}}</span>
         </mat-list-item>
       </div>
       <div *ngIf="filterForState=='todos'">
@@ -51,7 +51,7 @@
           <span mat-line>Tipo de Reporte: {{report.typeReport}}</span>
           <span mat-line>Placa: {{report.plate}}</span>
           <span mat-line>Estado: {{report.state}}</span>
-          <span mat-line>Fecha: {{report.date}}</span>
+          <span mat-line>Fecha: {{report.date | date: "short"}}</span>
         </mat-list-item>
       </div>
     </div>

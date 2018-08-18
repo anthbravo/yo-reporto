@@ -7,7 +7,6 @@ import { DialogComponent } from "../dialog/dialog.component";
 import { Report } from "../../shared/models/report";
 
 import { ReportService } from "../../shared/services/report.service";
-import { ReportSendComponent } from "../report-send/report-send.component";
 import { AuthenticationService } from "../../shared/services/authentication.service";
 
 @Component({
@@ -97,7 +96,10 @@ export class CameraComponent implements OnInit {
     );
 
     this.report.image = this.canvas.nativeElement.toDataURL("image/png");
-    this.report.date = new Date();
+
+    const date: Date = new Date();
+
+    this.report.date = date.toString();
 
     this.camara.nativeElement.style.display = "none";
 

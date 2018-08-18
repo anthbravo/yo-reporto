@@ -3,6 +3,6 @@ export interface Report {
   state?: string;
   name?: string;
   plate?: string;
-  date?: Date;
+  date?: string;
   image?: string;
 }
