@@ -6,6 +6,10 @@ import { DialogComponent } from "../dialog/dialog.component";
 
 import { Report } from "../../shared/models/report";
 
+import { ReportService } from "../../shared/services/report.service";
+import { ReportSendComponent } from "../report-send/report-send.component";
+import { AuthenticationService } from "../../shared/services/authentication.service";
+
 @Component({
   selector: "a-camera",
   templateUrl: "./camera.component.html",
@@ -30,7 +34,12 @@ export class CameraComponent implements OnInit {
   buttonList: HTMLElement;
   buttonPhoto: HTMLElement;
 
-  constructor(private router: Router, public dialog: MatDialog) {}
+  constructor(
+    private router: Router,
+    public dialog: MatDialog,
+    private reportService: ReportService,
+    private authenticationService: AuthenticationService
+  ) {}
 
   ngOnInit() {}
 
@@ -72,9 +81,7 @@ export class CameraComponent implements OnInit {
 
     this.camara.nativeElement.style.display = "none";
 
-    console.log("date", this.report.date);
-
-    // this.imgStorage.insertProduct(nuevaImg);
+    console.log("report", this.report);
   }
 
   cancel() {
@@ -91,9 +98,10 @@ export class CameraComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log("The dialog was closed");
-      this.report = result;
-      console.log("this.report.plate : " + this.report.plate);
+      console.log("Cerrado de Dialog");
+      this.report.plate = result.plate;
+      this.report.typeReport = result.typeReport;
+
       if (
         !(
           this.report.typeReport == "" ||
@@ -106,10 +114,19 @@ export class CameraComponent implements OnInit {
         this.buttonSend.style.display = "block";
       }
     });
+
+    console.log("report", this.report);
   }
 
   send() {
     console.log("send");
+
+    this.report.state = "pendiente";
+    this.reportService.sendReport(this.report);
+
+    console.log("report", this.report);
+
+    this.resetValues();
   }
 
   resetValues() {

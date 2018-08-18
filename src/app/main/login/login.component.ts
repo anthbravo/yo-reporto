@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit {
       .signInWithGoogle()
       .then(res => {
         console.log("Logueo Correcto");
+
+        localStorage.setItem("uid", res.user.uid);
         this.router.navigateByUrl("/camara");
       })
       .catch(error => {

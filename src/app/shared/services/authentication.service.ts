@@ -7,7 +7,6 @@ import * as firebase from "firebase/app";
   providedIn: "root"
 })
 export class AuthenticationService {
-  
   constructor(public angularFireAuth: AngularFireAuth) {}
 
   signInWithGoogle() {

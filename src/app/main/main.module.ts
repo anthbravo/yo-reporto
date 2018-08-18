@@ -21,6 +21,7 @@ import { DialogComponent } from "./dialog/dialog.component";
     DialogComponent
   ],
   entryComponents: [DialogComponent],
-  exports: [LoginComponent, ReportsComponent, CameraComponent]
+  exports: [LoginComponent, ReportsComponent, CameraComponent],
+  providers: []
 })
 export class MainModule {}
