@@ -1,19 +1,28 @@
 <div class="background">
-  <button mat-icon-button color="primary" (click)="goToCamera()">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <mat-form-field>
-    <mat-select placeholder="Estado" (selectionChange)="filterState($event)">
-      <mat-option *ngFor="let state of states" [value]="state">
-        {{state}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div class="header">
+    <button id="btn-menu" mat-icon-button color="primary" (click)="goToCamera()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="header-text">
+      <h2>Yo Reporto</h2>
+    </div>
+  </div>
 
   <mat-list>
-    <h3 matSubheader>Reportes</h3>
 
-    <div *ngFor="let report of reports | async">
+    <div class="Busqueda-container">
+
+      <h3 matSubheader>Mis Reportes</h3>
+      <mat-form-field>
+        <mat-select placeholder="Estado" (selectionChange)="filterState($event)">
+          <mat-option *ngFor="let state of states" [value]="state">
+            {{state}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="listas" *ngFor="let report of reports | async">
       <div *ngIf="report.state=='pendiente' && filterForState=='pendiente'">
         <mat-list-item>
           <img *ngIf="report.image" mat-list-avatar [src]="report.image" alt="">
