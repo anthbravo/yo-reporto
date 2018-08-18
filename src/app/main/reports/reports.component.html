@@ -23,9 +23,9 @@
     </div>
 
     <div class="listas" *ngFor="let report of reports | async">
-      <div *ngIf="report.state=='pendiente' && filterForState=='pendiente'">
+      <div *ngIf="report.state=='pendiente' && filterForState=='pendiente'" >
         <mat-list-item>
-          <img *ngIf="report.image" mat-list-avatar [src]="report.image" alt="">
+          <img *ngIf="report.image" mat-list-avatar [src]="report.image" alt="" (click)="show(report)">
           <img *ngIf="!report.image" mat-list-avatar [src]="DEFAULT_PICTURE" alt="">
           <span mat-line>Tipo de Reporte: {{report.typeReport}}</span>
           <span mat-line>Placa: {{report.plate}}</span>
@@ -33,9 +33,9 @@
           <span mat-line>Fecha: {{report.date | date: "short"}}</span>
         </mat-list-item>
       </div>
-      <div *ngIf="report.state=='aceptado' && filterForState=='aceptado'">
+      <div *ngIf="report.state=='aceptado' && filterForState=='aceptado'" >
         <mat-list-item>
-          <img *ngIf="report.image" mat-list-avatar [src]="report.image" alt="">
+          <img *ngIf="report.image" mat-list-avatar [src]="report.image" alt="" (click)="show(report)">
           <img *ngIf="!report.image" mat-list-avatar [src]="DEFAULT_PICTURE" alt="">
           <span mat-line>Tipo de Reporte: {{report.typeReport}}</span>
           <span mat-line>Placa: {{report.plate}}</span>
@@ -45,7 +45,7 @@
       </div>
       <div *ngIf="report.state=='rechazado' && filterForState=='rechazado'">
         <mat-list-item>
-          <img *ngIf=" report.image " mat-list-avatar [src]="report.image " alt=" ">
+          <img *ngIf=" report.image " mat-list-avatar [src]="report.image " alt=" " (click)="show(report)">
           <img *ngIf="!report.image " mat-list-avatar [src]="DEFAULT_PICTURE " alt=" ">
           <span mat-line>Tipo de Reporte: {{report.typeReport}}</span>
           <span mat-line>Placa: {{report.plate}}</span>
@@ -55,7 +55,7 @@
       </div>
       <div *ngIf="filterForState=='todos'">
         <mat-list-item>
-          <img *ngIf=" report.image " mat-list-avatar [src]="report.image " alt=" ">
+          <img *ngIf=" report.image " mat-list-avatar [src]="report.image " alt=" " (click)="show(report)">
           <img *ngIf="!report.image " mat-list-avatar [src]="DEFAULT_PICTURE " alt=" ">
           <span mat-line>Tipo de Reporte: {{report.typeReport}}</span>
           <span mat-line>Placa: {{report.plate}}</span>

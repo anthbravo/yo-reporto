@@ -19,13 +19,39 @@ export class ReportsComponent implements OnInit {
   states: Array<String> = ["todos", "pendiente", "aceptado", "rechazado"];
   filterForState: string;
   reports: Observable<Report[]>;
-
+  public closeIcon;
   constructor(private router: Router, private reportService: ReportService) {}
 
   ngOnInit() {
     this.reports = this.reportService.listAllReports();
     this.filterForState = "todos";
+
   }
+
+  modalScreen(q){
+      
+      var img  =  document.createElement('img');  
+      var modal = document.createElement("div");
+      modal.setAttribute("id","modal");
+      modal.style.background="rgba(23,23,23,.8)";
+      modal.style.position="absolute";
+      modal.style.top="0";
+      modal.style.left="0";
+      modal.style.display="flex";
+      modal.style.justifyContent="center";
+      modal.style.alignItems="center";
+      modal.style.zIndex="1";
+      modal.style.width="100%";
+      modal.style.height="100vh";
+
+      img.setAttribute("class","img-c");
+      img.setAttribute("src",q);
+      document.getElementsByTagName("body")[0].appendChild(modal);
+      modal.appendChild(img);
+      img.style.width="150px";
+      img.style.height="150px";
+
+    }
 
   goToCamera() {
     this.router.navigateByUrl("/camara");
@@ -35,4 +61,12 @@ export class ReportsComponent implements OnInit {
     console.log("filterState", event.value);
     this.filterForState = event.value;
   }
+  show(report){
+    this.modalScreen(report.image);
+
+   document.getElementById('modal').addEventListener('click', e=>{
+      document.getElementById('modal').remove();
+    })
+    }
+
 }
