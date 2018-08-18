@@ -1,16 +1,16 @@
 <button mat-icon-button color="primary" (click)="goToReport()">
   <mat-icon>menu</mat-icon>
 </button>
-<button id="idCancel" mat-icon-button color="primary" (click)="cancel()">
+<button id="btnCancel" mat-icon-button color="primary" (click)="cancel()">
   <mat-icon>cancel</mat-icon>
 </button>
-<button id="idSend" mat-icon-button color="primary" (click)="send()">
+<button id="btnSend" mat-icon-button color="primary" (click)="send()">
   <mat-icon>send</mat-icon>
 </button>
-<button id="idList" mat-icon-button color="primary" (click)="list()">
+<button id="btnList" mat-icon-button color="primary" (click)="list()">
   <mat-icon>list</mat-icon>
 </button>
-<button id="idPhoto" mat-icon-button color="primary" (click)="photo()">
+<button id="btnPhoto" mat-icon-button color="primary" (click)="photo()">
   <mat-icon>brightness_1</mat-icon>
 </button>
 
@@ -19,3 +19,14 @@
   <i>{{report.typeReport}}</i>
   <i>{{report.plate}}</i>
 </h2>
+
+
+<div id="app">
+  <div>
+    <video #camara width="640" height="480" autoplay></video>
+  </div>
+
+  <div>
+    <canvas #canvas width="640" height="480"></canvas>
+  </div>
+</div>

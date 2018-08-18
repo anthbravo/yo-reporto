@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { Router } from "@angular/router";
 import { MatDialog } from "@angular/material";
 
@@ -12,6 +12,14 @@ import { Report } from "../../shared/models/report";
   styleUrls: ["./camera.component.scss"]
 })
 export class CameraComponent implements OnInit {
+  @ViewChild("camara")
+  camara: ElementRef;
+
+  @ViewChild("canvas")
+  canvas: ElementRef;
+
+  context: any;
+
   report: Report = {
     typeReport: "",
     plate: ""
@@ -24,11 +32,23 @@ export class CameraComponent implements OnInit {
 
   constructor(private router: Router, public dialog: MatDialog) {}
 
-  ngOnInit() {
-    this.buttonCancel = document.getElementById("idCancel");
-    this.buttonSend = document.getElementById("idSend");
-    this.buttonList = document.getElementById("idList");
-    this.buttonPhoto = document.getElementById("idPhoto");
+  ngOnInit() {}
+
+  ngAfterViewInit() {
+    this.buttonCancel = document.getElementById("btnCancel");
+    this.buttonSend = document.getElementById("btnSend");
+    this.buttonList = document.getElementById("btnList");
+    this.buttonPhoto = document.getElementById("btnPhoto");
+    this.context = this.canvas.nativeElement.getContext("2d");
+
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices
+        .getUserMedia({ audio: false, video: { facingMode: "user" } })
+        .then(stream => {
+          this.camara.nativeElement.src = window.URL.createObjectURL(stream);
+          this.camara.nativeElement.play();
+        });
+    }
 
     this.resetValues();
   }
@@ -43,6 +63,18 @@ export class CameraComponent implements OnInit {
     this.buttonCancel.style.display = "block";
     this.buttonList.style.display = "block";
     this.buttonPhoto.style.display = "block";
+    this.canvas.nativeElement.style.display = "block";
+
+    this.context.drawImage(this.camara.nativeElement, 0, 0, 640, 480);
+
+    this.report.image = this.canvas.nativeElement.toDataURL("image/png");
+    this.report.date = new Date();
+
+    this.camara.nativeElement.style.display = "none";
+
+    console.log("date", this.report.date);
+
+    // this.imgStorage.insertProduct(nuevaImg);
   }
 
   cancel() {
@@ -86,11 +118,15 @@ export class CameraComponent implements OnInit {
     this.buttonSend.style.display = "none";
     this.buttonList.style.display = "none";
 
+    this.canvas.nativeElement.style.display = "none";
+    this.camara.nativeElement.style.display = "block";
     this.buttonPhoto.style.display = "block";
 
     this.report = {
       typeReport: "",
-      plate: ""
+      plate: "",
+      image: "",
+      date: null
     };
   }
 }

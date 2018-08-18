@@ -18,31 +18,31 @@ export class ReportsComponent implements OnInit {
       typeReport: "obstruccion-peatonal",
       state: "pendiente",
       plate: "ABCDEFG232323",
-      date: "21/05/1993"
+      date: new Date()
     },
     {
       typeReport: "estacionamiento-prohibido",
       state: "aceptado",
       plate: "ABCDEFG232323",
-      date: "21/05/1993"
+      date: new Date()
     },
     {
       typeReport: "obstruccion-peatonal",
       state: "rechazado",
       plate: "ABCDEFG23232",
-      date: "21/05/1993"
+      date: new Date()
     },
     {
       typeReport: "estacionamiento-prohibido",
       state: "rechazado",
       plate: "ABCDEFG56565",
-      date: "21/05/1993"
+      date: new Date()
     },
     {
       typeReport: "obstruccion-peatonal",
       state: "aceptado",
       plate: "ABCDEFG333333",
-      date: "21/05/1993"
+      date: new Date()
     }
   ];
 
