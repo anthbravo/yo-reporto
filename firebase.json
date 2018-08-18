@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/yo-reporto",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",
