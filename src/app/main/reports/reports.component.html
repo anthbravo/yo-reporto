@@ -1,4 +1,27 @@
-<a-header></a-header>
-<p>
-  reports works!
-</p>
+<div class="background">
+  <button mat-icon-button color="primary" (click)="goToCamera()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-form-field>
+    <mat-select placeholder="Estado" (selectionChange)="filterState($event)">
+      <mat-option *ngFor="let state of states" [value]="state">
+        {{state}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-list>
+    <h3 matSubheader>Reportes</h3>
+
+    <mat-list-item *ngFor="let report of reports">
+      <img *ngIf="report.image" mat-list-avatar [src]="report.image" alt="">
+      <img *ngIf="!report.image" mat-list-avatar [src]="DEFAULT_PICTURE" alt="">
+      <span mat-line>Tipo de Reporte: {{report.typeReport}}</span>
+      <span mat-line>Placa: {{report.plate}}</span>
+      <span mat-line>Estado: {{report.state}}</span>
+      <span mat-line>Fecha: {{report.date}}</span>
+    </mat-list-item>
+
+  </mat-list>
+
+</div>

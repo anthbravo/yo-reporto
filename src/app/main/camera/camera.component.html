@@ -1,4 +1,21 @@
-<a-header></a-header>
-<p>
-  camera works!
-</p>
+<button mat-icon-button color="primary" (click)="goToReport()">
+  <mat-icon>menu</mat-icon>
+</button>
+<button id="idCancel" mat-icon-button color="primary" (click)="cancel()">
+  <mat-icon>cancel</mat-icon>
+</button>
+<button id="idSend" mat-icon-button color="primary" (click)="send()">
+  <mat-icon>send</mat-icon>
+</button>
+<button id="idList" mat-icon-button color="primary" (click)="list()">
+  <mat-icon>list</mat-icon>
+</button>
+<button id="idPhoto" mat-icon-button color="primary" (click)="photo()">
+  <mat-icon>brightness_1</mat-icon>
+</button>
+
+
+<h2 *ngIf="report">
+  <i>{{report.typeReport}}</i>
+  <i>{{report.plate}}</i>
+</h2>

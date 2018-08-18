@@ -9,10 +9,6 @@ import { AuthenticationService } from "../../shared/services/authentication.serv
   styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit {
-  email: string;
-  password: string;
-  mensaje: string;
-
   constructor(
     private authenticationService: AuthenticationService,
     private router: Router
@@ -25,12 +21,12 @@ export class LoginComponent implements OnInit {
     this.authenticationService
       .signInWithGoogle()
       .then(res => {
-        this.mensaje = "Logueo correcto";
+        console.log("Logueo Correcto");
         this.router.navigateByUrl("/camara");
       })
       .catch(error => {
         // var errorCode = error.code;
-        this.mensaje = error.message;
+        console.log(error.message);
       });
   }
 }

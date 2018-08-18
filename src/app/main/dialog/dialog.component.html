@@ -1,0 +1,17 @@
+<div mat-dialog-content>
+  <mat-radio-group class="example-radio-group" [(ngModel)]="data.typeReport">
+    <mat-radio-button class="example-radio-button" *ngFor="let report of reports" [value]="report.typeReport">
+      <h5>{{report.name}}</h5>
+    </mat-radio-button>
+  </mat-radio-group>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.plate" placeholder="Placa">
+  </mat-form-field>
+
+</div>
+
+
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data">Aceptar</button>
+</div>
