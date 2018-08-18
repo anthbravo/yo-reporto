@@ -52,7 +52,10 @@ export class CameraComponent implements OnInit {
 
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices
-        .getUserMedia({ audio: false, video: { facingMode: "user" } })
+        .getUserMedia({
+          audio: false,
+          video: { facingMode: { exact: "environment" } }
+        })
         .then(stream => {
           this.camara.nativeElement.src = window.URL.createObjectURL(stream);
           this.camara.nativeElement.play();

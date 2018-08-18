@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
 
         localStorage.setItem("uid", res.user.uid);
         this.router.navigateByUrl("/camara");
+        location.reload();
       })
       .catch(error => {
         // var errorCode = error.code;
