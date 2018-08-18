@@ -56,7 +56,8 @@ export class CameraComponent implements OnInit {
       navigator.mediaDevices
         .getUserMedia({
           audio: false,
-          video: { facingMode: "user" }
+          // video: { facingMode: "user" }
+          video: { facingMode: { exact: "environment" } }
         })
         .then(stream => {
           this.camara.nativeElement.src = window.URL.createObjectURL(stream);
@@ -146,6 +147,8 @@ export class CameraComponent implements OnInit {
     console.log("report", this.report);
 
     this.resetValues();
+
+    this.router.navigateByUrl("/reporte-enviado");
   }
 
   resetValues() {
